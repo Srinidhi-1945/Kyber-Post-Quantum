@@ -1,0 +1,13 @@
+flask==2.3.3
+flask-socketio==5.3.4
+python-socketio==5.10.0
+pycryptodome==3.19.0
+kyber-py==0.3.0
+cryptography==41.0.7
+numpy==1.24.3
+matplotlib==3.7.2
+pandas==2.0.3
+plotly==5.17.0
+python-jose==3.3.0
+flask
+flask-cors
