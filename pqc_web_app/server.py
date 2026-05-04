@@ -2243,6 +2243,7 @@ def aes_decrypt(ciphertext, key):
         return None
 
 # ================= DIFFIE =================
+
 def dh_generate():
     p = int(
         "FFFFFFFFFFFFFFFFC90FDAA22168C234C4C6628B80DC1CD1"
@@ -2515,10 +2516,16 @@ def index():
 def static_files(path):
     return send_from_directory("ui", path)
 
+@app.route("/")
+def home():
+    return send_from_directory("ui", "index.html")
 # ================= RUN =================
+import os
+
 if __name__ == "__main__":
-    print("🔥 Server running at http://localhost:5000")
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 10000))
+    print(f"🔥 Server running on port {port}")
+    app.run(host="0.0.0.0", port=port)
 # ================= STEP 4 =================
 '''@app.route("/api/step4", methods=["POST"])
 def step4():
