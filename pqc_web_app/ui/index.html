@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crypto Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>🔐 Kyber vs Diffie-Hellman</h1>
+
+<div class="controls">
+  <select id="mode">
+    <option value="secure">🟢 No MITM</option>
+    <option value="mitm">🔴 MITM Attack</option>
+  </select>
+
+  <select id="algo" onchange="updateUI()">
+    <option value="kyber">Kyber</option>
+    <option value="dh">Diffie-Hellman</option>
+  </select>
+</div>
+
+<input id="message" placeholder="Enter message">
+
+<br><br>
+
+<div class="buttons">
+  <button onclick="step1()">🔑 Generate Keys</button>
+  <button onclick="step2()">📡 Share Key</button>
+  <button onclick="step3()">🔐 Encrypt</button>
+  
+  <button onclick="step4()">⚡ Send</button>
+  <button onclick="step5()">📬 Decrypt</button>
+</div>
+
+<hr>
+
+<div class="container">
+
+  <div class="card">
+    <h2>📡 Encrypted</h2>
+    <p id="encrypted"></p>
+  </div>
+
+  <div class="card">
+    <h2>🖥️ Bob</h2>
+    <p id="bob-message"></p>
+
+  </div>
+  
+
+</div>
+
+<hr>
+
+<h2>🔐 Key Generation & Transmission</h2>
+
+
+<div id="kyberSection">
+
+    <h3>Bob Public Key:</h3>
+    <div id="kyberBobKey">-</div>
+
+    <h3>Ciphertext:</h3>
+    <div id="kyberCipher">-</div>
+
+</div>
+
+<div id="diffieSection">
+
+    <h3>Alice Public Key:</h3>
+    <div id="aliceKey">-</div>
+
+    <h3>Bob Public Key:</h3>
+    <div id="bobKey">-</div>
+
+    <h3>Mallory → Alice:</h3>
+    <div id="malloryAlice">-</div>
+
+    <h3>Mallory → Bob:</h3>
+    <div id="malloryBob">-</div>
+
+</div>
+
+
+
+<p><b>Shared Secret:</b></p>
+<p id="sharedKey">-</p>
+
+<p><b>Intercepted (Mallory):</b></p>
+<button onclick="attackerModify()">⚠ Modify & Forward</button>
+<p id="intercepted">-</p>
+
+
+<!-- Attacker box -->
+<div class="attacker">
+  <h3>🕵️ Mallory</h3>
+  <input id="attackerMessage" placeholder="Modify message ">
+</div>
+
+<h3>📜 Steps</h3>
+<div id="steps"></div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
